@@ -1,112 +1,69 @@
-# Conversor Excel para TXT
+# Excel Matcher
 
-Este projeto é um conversor de arquivos Excel para TXT, desenvolvido com Next.js, TypeScript e Tailwind CSS.
+A Next.js application for matching and comparing data from two Excel files and exporting the results in various text formats.
 
-## Funcionalidades
+## Features
 
-- Upload de arquivos Excel
-- Conversão para três formatos de arquivo TXT
-- Visualização prévia dos arquivos gerados
-- Download individual ou em ZIP
-- Suporte a arquivos EAN (opcional)
+- Upload and process two Excel files
+- Match data between files based on specific columns
+- Preview matched data with a tabular interface
+- Export data in multiple text formats:
+  - Lista de Produtos ATUAIS.txt
+  - estoque_list.txt
+  - Conferência Ok.txt
+- Download all files as a ZIP archive
+- Preview file contents before downloading
 
-## Requisitos
+## Getting Started
 
-- Node.js 18.x ou superior
-- npm ou yarn
+### Prerequisites
 
-## Instalação
+- Node.js 16.x or later
+- npm or yarn
 
-1. Clone o repositório:
+### Installation
 
+1. Clone the repository:
 \`\`\`bash
-git clone https://github.com/seu-usuario/conversor-excel-txt.git
-cd conversor-excel-txt
+git clone https://github.com/yourusername/excel-matcher.git
+cd excel-matcher
 \`\`\`
 
-2. Instale as dependências:
-
+2. Install dependencies:
 \`\`\`bash
 npm install
-# ou
+# or
 yarn install
 \`\`\`
 
-3. Execute o projeto em modo de desenvolvimento:
-
+3. Start the development server:
 \`\`\`bash
 npm run dev
-# ou
+# or
 yarn dev
 \`\`\`
 
-4. Acesse o projeto em [http://localhost:3000](http://localhost:3000)
+4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
-## Estrutura de Arquivos
+## Dependencies
 
-- `app/` - Páginas e rotas da aplicação
-- `components/` - Componentes React reutilizáveis
-- `public/` - Arquivos estáticos e uploads temporários
-- `lib/` - Funções utilitárias
+- Next.js
+- React
+- xlsx (for Excel file processing)
+- jszip (for creating ZIP archives)
+- Tailwind CSS (for styling)
+- shadcn/ui components
+- Lucide React (for icons)
 
-## Como Usar
+## Usage
 
-1. Acesse a página inicial
-2. Faça upload do arquivo Excel principal (obrigatório)
-3. Opcionalmente, faça upload do arquivo EAN
-4. Clique em "Converter Arquivos"
-5. Visualize a prévia dos arquivos gerados
-6. Faça o download individual ou em ZIP dos arquivos
+1. Upload the first Excel file containing the EXTRAINF02 column
+2. Upload the second Excel file containing the Cód. Produto column
+3. Click "Comparar Arquivos" to process the files
+4. View the matched data in the results table
+5. Preview the different export formats in the tabs
+6. Download individual files or all files as a ZIP archive
 
-## Formatos de Saída
+## License
 
-- **Estoque lista.txt** - Contém código, quantidade e valor unitário
-- **Conferência Ok.txt** - Contém código, descrição, quantidade e informações extras
-- **Lista de Produtos ATUAIS.txt** - Contém código, descrição e informações extras
-
-## Licença
-
-MIT
-\`\`\`
-
-Let's create a .gitignore file:
-
-```text file=".gitignore"
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
-
-# testing
-/coverage
-
-# next.js
-/.next/
-/out/
-
-# production
-/build
-
-# misc
-.DS_Store
-*.pem
-
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# local env files
-.env*.local
-
-# vercel
-.vercel
-
-# typescript
-*.tsbuildinfo
-next-env.d.ts
-
-# uploads
-/public/uploads/
+This project is licensed under the MIT License - see the LICENSE file for details.
