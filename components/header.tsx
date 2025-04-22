@@ -12,13 +12,13 @@ export function Header() {
   const routes = [
     {
       href: "/",
-      label: "Comparador Excel",
+      label: "INVENTÁRIO CONTAGEM GERAL",
       icon: FileSpreadsheet,
       active: pathname === "/",
     },
     {
       href: "/location",
-      label: "Comparador com Localização",
+      label: "INVENTÁRIO CONTAGEM POR SEÇÃO",
       icon: MapPin,
       active: pathname === "/location",
     },

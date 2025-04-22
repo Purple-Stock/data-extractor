@@ -1,7 +1,7 @@
 import type React from "react"
 
 export const metadata = {
-  title: "Comparador com Localização | Excel Matcher",
+  title: "INVENTÁRIO CONTAGEM POR SEÇÃO | Excel Matcher",
   description: "Compare e agrupe dados de Excel por localização",
 }
 

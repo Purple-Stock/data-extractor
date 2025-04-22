@@ -1,7 +1,7 @@
 import ExcelMatcherClient from "./excel-matcher-client"
 
 export const metadata = {
-  title: "Comparador Excel | Excel Matcher",
+  title: "INVENTÁRIO CONTAGEM GERAL | Excel Matcher",
   description: "Compare e combine dados de arquivos Excel",
 }
 

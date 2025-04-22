@@ -149,22 +149,24 @@ export function FilePreview({ matchedData }: FilePreviewProps) {
             </TabsList>
 
             <TabsContent value="estoque" className="border rounded-md p-4">
-              <div className="text-sm font-medium mb-2">Mostrando 5 de {matchedData.length} linhas</div>
+              <div className="text-sm font-medium mb-2 text-gray-600 dark:text-slate-400">
+                Mostrando 5 de {matchedData.length} linhas
+              </div>
               <div className="overflow-x-auto">
                 <table className="w-full border-collapse">
                   <thead>
-                    <tr className="bg-slate-800">
-                      <th className="border px-4 py-2 text-left">CODIGO</th>
-                      <th className="border px-4 py-2 text-left">QTDA</th>
-                      <th className="border px-4 py-2 text-left">VALOR UNIT</th>
+                    <tr className="bg-gray-200 dark:bg-slate-800">
+                      <th className="border border-gray-300 dark:border-slate-700 px-4 py-2 text-left">CODIGO</th>
+                      <th className="border border-gray-300 dark:border-slate-700 px-4 py-2 text-left">QTDA</th>
+                      <th className="border border-gray-300 dark:border-slate-700 px-4 py-2 text-left">VALOR UNIT</th>
                     </tr>
                   </thead>
                   <tbody>
                     {estoquePreview.map((row, index) => (
-                      <tr key={index} className="border-b">
-                        <td className="border px-4 py-2">{row.CODIGO}</td>
-                        <td className="border px-4 py-2">{row.QTDA}</td>
-                        <td className="border px-4 py-2">{row["VALOR UNIT"]}</td>
+                      <tr key={index} className="border-b border-gray-300 dark:border-slate-700">
+                        <td className="border border-gray-300 dark:border-slate-700 px-4 py-2">{row.CODIGO}</td>
+                        <td className="border border-gray-300 dark:border-slate-700 px-4 py-2">{row.QTDA}</td>
+                        <td className="border border-gray-300 dark:border-slate-700 px-4 py-2">{row["VALOR UNIT"]}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -173,28 +175,30 @@ export function FilePreview({ matchedData }: FilePreviewProps) {
             </TabsContent>
 
             <TabsContent value="conferencia" className="border rounded-md p-4">
-              <div className="text-sm font-medium mb-2">Mostrando 5 de {matchedData.length} linhas</div>
+              <div className="text-sm font-medium mb-2 text-gray-600 dark:text-slate-400">
+                Mostrando 5 de {matchedData.length} linhas
+              </div>
               <div className="overflow-x-auto">
                 <table className="w-full border-collapse">
                   <thead>
-                    <tr className="bg-slate-800">
-                      <th className="border px-4 py-2 text-left">CODIGO</th>
-                      <th className="border px-4 py-2 text-left">DESCRI O</th>
-                      <th className="border px-4 py-2 text-left">QTDA</th>
-                      <th className="border px-4 py-2 text-left">EXTRAINF01</th>
-                      <th className="border px-4 py-2 text-left">EXTRAINF02</th>
-                      <th className="border px-4 py-2 text-left">REQEXTRADATA</th>
+                    <tr className="bg-gray-200 dark:bg-slate-800">
+                      <th className="border border-gray-300 dark:border-slate-700 px-4 py-2 text-left">CODIGO</th>
+                      <th className="border border-gray-300 dark:border-slate-700 px-4 py-2 text-left">DESCRI O</th>
+                      <th className="border border-gray-300 dark:border-slate-700 px-4 py-2 text-left">QTDA</th>
+                      <th className="border border-gray-300 dark:border-slate-700 px-4 py-2 text-left">EXTRAINF01</th>
+                      <th className="border border-gray-300 dark:border-slate-700 px-4 py-2 text-left">EXTRAINF02</th>
+                      <th className="border border-gray-300 dark:border-slate-700 px-4 py-2 text-left">REQEXTRADATA</th>
                     </tr>
                   </thead>
                   <tbody>
                     {conferenciaPreview.map((row, index) => (
-                      <tr key={index} className="border-b">
-                        <td className="border px-4 py-2">{row.CODIGO}</td>
-                        <td className="border px-4 py-2">{row["DESCRI  O"]}</td>
-                        <td className="border px-4 py-2">{row.QTDA}</td>
-                        <td className="border px-4 py-2">{row.EXTRAINF01}</td>
-                        <td className="border px-4 py-2">{row.EXTRAINF02}</td>
-                        <td className="border px-4 py-2">{row.REQEXTRADATA}</td>
+                      <tr key={index} className="border-b border-gray-300 dark:border-slate-700">
+                        <td className="border border-gray-300 dark:border-slate-700 px-4 py-2">{row.CODIGO}</td>
+                        <td className="border border-gray-300 dark:border-slate-700 px-4 py-2">{row["DESCRI  O"]}</td>
+                        <td className="border border-gray-300 dark:border-slate-700 px-4 py-2">{row.QTDA}</td>
+                        <td className="border border-gray-300 dark:border-slate-700 px-4 py-2">{row.EXTRAINF01}</td>
+                        <td className="border border-gray-300 dark:border-slate-700 px-4 py-2">{row.EXTRAINF02}</td>
+                        <td className="border border-gray-300 dark:border-slate-700 px-4 py-2">{row.REQEXTRADATA}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -203,26 +207,28 @@ export function FilePreview({ matchedData }: FilePreviewProps) {
             </TabsContent>
 
             <TabsContent value="produtos" className="border rounded-md p-4">
-              <div className="text-sm font-medium mb-2">Mostrando 5 de {matchedData.length} linhas</div>
+              <div className="text-sm font-medium mb-2 text-gray-600 dark:text-slate-400">
+                Mostrando 5 de {matchedData.length} linhas
+              </div>
               <div className="overflow-x-auto">
                 <table className="w-full border-collapse">
                   <thead>
-                    <tr className="bg-slate-800">
-                      <th className="border px-4 py-2 text-left">CODE</th>
-                      <th className="border px-4 py-2 text-left">DESCRIPTION</th>
-                      <th className="border px-4 py-2 text-left">EXTRAINF01</th>
-                      <th className="border px-4 py-2 text-left">EXTRAINF02</th>
-                      <th className="border px-4 py-2 text-left">REQEXTRADATA</th>
+                    <tr className="bg-gray-200 dark:bg-slate-800">
+                      <th className="border border-gray-300 dark:border-slate-700 px-4 py-2 text-left">CODE</th>
+                      <th className="border border-gray-300 dark:border-slate-700 px-4 py-2 text-left">DESCRIPTION</th>
+                      <th className="border border-gray-300 dark:border-slate-700 px-4 py-2 text-left">EXTRAINF01</th>
+                      <th className="border border-gray-300 dark:border-slate-700 px-4 py-2 text-left">EXTRAINF02</th>
+                      <th className="border border-gray-300 dark:border-slate-700 px-4 py-2 text-left">REQEXTRADATA</th>
                     </tr>
                   </thead>
                   <tbody>
                     {produtosPreview.map((row, index) => (
-                      <tr key={index} className="border-b">
-                        <td className="border px-4 py-2">{row.CODE}</td>
-                        <td className="border px-4 py-2">{row.DESCRIPTION}</td>
-                        <td className="border px-4 py-2">{row.EXTRAINF01}</td>
-                        <td className="border px-4 py-2">{row.EXTRAINF02}</td>
-                        <td className="border px-4 py-2">{row.REQEXTRADATA}</td>
+                      <tr key={index} className="border-b border-gray-300 dark:border-slate-700">
+                        <td className="border border-gray-300 dark:border-slate-700 px-4 py-2">{row.CODE}</td>
+                        <td className="border border-gray-300 dark:border-slate-700 px-4 py-2">{row.DESCRIPTION}</td>
+                        <td className="border border-gray-300 dark:border-slate-700 px-4 py-2">{row.EXTRAINF01}</td>
+                        <td className="border border-gray-300 dark:border-slate-700 px-4 py-2">{row.EXTRAINF02}</td>
+                        <td className="border border-gray-300 dark:border-slate-700 px-4 py-2">{row.REQEXTRADATA}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -243,8 +249,8 @@ export function FilePreview({ matchedData }: FilePreviewProps) {
             </Button>
 
             <div className="space-y-2">
-              <h4 className="text-sm font-medium mb-2">Downloads Individuais:</h4>
-              <div className="flex justify-between items-center p-3 border rounded-md">
+              <h4 className="text-sm font-medium mb-2 text-gray-700 dark:text-slate-300">Downloads Individuais:</h4>
+              <div className="flex justify-between items-center p-3 border border-gray-300 dark:border-slate-700 rounded-md">
                 <div className="flex items-center gap-2">
                   <span className="text-sm">Estoque lista.txt</span>
                 </div>
@@ -257,7 +263,7 @@ export function FilePreview({ matchedData }: FilePreviewProps) {
                 </Button>
               </div>
 
-              <div className="flex justify-between items-center p-3 border rounded-md">
+              <div className="flex justify-between items-center p-3 border border-gray-300 dark:border-slate-700 rounded-md">
                 <div className="flex items-center gap-2">
                   <span className="text-sm">Conferência Ok.txt</span>
                 </div>
@@ -270,7 +276,7 @@ export function FilePreview({ matchedData }: FilePreviewProps) {
                 </Button>
               </div>
 
-              <div className="flex justify-between items-center p-3 border rounded-md">
+              <div className="flex justify-between items-center p-3 border border-gray-300 dark:border-slate-700 rounded-md">
                 <div className="flex items-center gap-2">
                   <span className="text-sm">Lista de Produtos ATUAIS.txt</span>
                 </div>

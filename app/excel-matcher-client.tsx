@@ -116,10 +116,10 @@ export default function ExcelMatcherClient() {
   }
 
   return (
-    <main className="min-h-screen bg-slate-950 p-4 md:p-8">
+    <main className="min-h-screen bg-gray-100 dark:bg-slate-950 p-4 md:p-8">
       <Card className="mx-auto max-w-5xl">
         <CardHeader className="text-center">
-          <CardTitle className="text-3xl">Comparador de Arquivos Excel</CardTitle>
+          <CardTitle className="text-3xl">INVENTÁRIO CONTAGEM GERAL</CardTitle>
           <CardDescription>Faça upload de dois arquivos Excel para comparar e combinar dados</CardDescription>
         </CardHeader>
         <CardContent>
@@ -127,10 +127,10 @@ export default function ExcelMatcherClient() {
             <div className="space-y-2">
               <label className="block text-sm font-medium">Primeiro Arquivo Excel (com EXTRAINF02)</label>
               <div className="flex items-center justify-center w-full">
-                <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed rounded-lg cursor-pointer bg-slate-50 dark:bg-slate-900 border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800">
+                <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-slate-900 border-gray-300 dark:border-slate-700 hover:bg-gray-100 dark:hover:bg-slate-800">
                   <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                    <Upload className="w-8 h-8 mb-2 text-slate-500" />
-                    <p className="mb-2 text-sm text-slate-500">
+                    <Upload className="w-8 h-8 mb-2 text-gray-500 dark:text-slate-500" />
+                    <p className="mb-2 text-sm text-gray-500 dark:text-slate-500">
                       {firstFile ? firstFile.name : "Clique para selecionar o arquivo"}
                     </p>
                   </div>
@@ -141,10 +141,10 @@ export default function ExcelMatcherClient() {
             <div className="space-y-2">
               <label className="block text-sm font-medium">Segundo Arquivo Excel (com Cód. Produto)</label>
               <div className="flex items-center justify-center w-full">
-                <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed rounded-lg cursor-pointer bg-slate-50 dark:bg-slate-900 border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800">
+                <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-slate-900 border-gray-300 dark:border-slate-700 hover:bg-gray-100 dark:hover:bg-slate-800">
                   <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                    <Upload className="w-8 h-8 mb-2 text-slate-500" />
-                    <p className="mb-2 text-sm text-slate-500">
+                    <Upload className="w-8 h-8 mb-2 text-gray-500 dark:text-slate-500" />
+                    <p className="mb-2 text-sm text-gray-500 dark:text-slate-500">
                       {secondFile ? secondFile.name : "Clique para selecionar o arquivo"}
                     </p>
                   </div>
@@ -198,7 +198,7 @@ export default function ExcelMatcherClient() {
                     </TableBody>
                   </Table>
                 </div>
-                <div className="mt-4 text-sm text-slate-500">
+                <div className="mt-4 text-sm text-gray-500 dark:text-slate-500">
                   Total de correspondências encontradas: {matchedData.length}
                 </div>
               </div>
