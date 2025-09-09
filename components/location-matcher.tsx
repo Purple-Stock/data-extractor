@@ -90,7 +90,7 @@ export function LocationMatcher() {
     const dataToPreview = getFilteredData(activeTab).slice(0, 3)
 
     if (exportFormat === "estoque") {
-      const header = "CODIGO;DESCRIÇÃO;QTDA;VALOR UNIT"
+      const header = "CODIGO;DESCRIÇÃO;QTDA;VALOR UNIT;EXTRAINF01"
       const rows = dataToPreview.map((row) => {
         let valorUnit = "0.00"
         if (row.VALORUNIT) {
@@ -99,7 +99,7 @@ export function LocationMatcher() {
             valorUnit = numValue.toFixed(2)
           }
         }
-        return `${row["Cód. Auxiliar"] || ""};${row["Descrição_1"] || ""};${row.QUANTIDADE || "0"};${valorUnit}`
+        return `${row["Cód. Auxiliar"] || ""};${row["Descrição_1"] || ""};${row.QUANTIDADE || "0"};${valorUnit};${row.EXTRAINF01 || ""}`
       })
       setPreviewContent([header, ...rows])
     } else {
@@ -278,7 +278,7 @@ export function LocationMatcher() {
   }
 
   const generateEstoqueContent = (data: MatchedRow[]) => {
-    let content = "CODIGO;DESCRIÇÃO;QTDA;VALOR UNIT\n"
+    let content = "CODIGO;DESCRIÇÃO;QTDA;VALOR UNIT;EXTRAINF01\n"
     data.forEach((row) => {
       let valorUnit = "0.00"
       if (row.VALORUNIT) {
@@ -287,7 +287,7 @@ export function LocationMatcher() {
           valorUnit = numValue.toFixed(2)
         }
       }
-      const line = `${row["Cód. Auxiliar"] || ""};${row["Descrição_1"] || ""};${row.QUANTIDADE || "0"};${valorUnit}`
+      const line = `${row["Cód. Auxiliar"] || ""};${row["Descrição_1"] || ""};${row.QUANTIDADE || "0"};${valorUnit};${row.EXTRAINF01 || ""}`
       content += line + "\n"
     })
     return content
@@ -384,6 +384,7 @@ export function LocationMatcher() {
           DESCRIÇÃO: row["Descrição_1"] || "",
           QTDA: row.QUANTIDADE || "0",
           "VALOR UNIT": valorUnit,
+          EXTRAINF01: row.EXTRAINF01 || "",
         }
       })
     } else {
@@ -580,7 +581,7 @@ export function LocationMatcher() {
                     value={exportFormat}
                     onChange={(e) => setExportFormat(e.target.value as "estoque" | "produtos")}
                   >
-                    <option value="estoque">Estoque (CODIGO;DESCRIÇÃO;QTDA;VALOR UNIT)</option>
+                    <option value="estoque">Estoque (CODIGO;DESCRIÇÃO;QTDA;VALOR UNIT;EXTRAINF01)</option>
                     <option value="produtos">Produtos (CODE;DESCRIPTION;EXTRAINF01;EXTRAINF02;REQEXTRADATA)</option>
                   </select>
                 </div>
@@ -728,6 +729,7 @@ export function LocationMatcher() {
                           <TableHead>DESCRIÇÃO</TableHead>
                           <TableHead>QTDA</TableHead>
                           <TableHead>VALOR UNIT</TableHead>
+                          <TableHead>EXTRAINF01</TableHead>
                         </>
                       ) : (
                         <>
@@ -749,6 +751,7 @@ export function LocationMatcher() {
                             <TableCell>{row.DESCRIÇÃO}</TableCell>
                             <TableCell>{row.QTDA}</TableCell>
                             <TableCell>{row["VALOR UNIT"]}</TableCell>
+                            <TableCell>{row.EXTRAINF01}</TableCell>
                           </>
                         ) : (
                           <>
