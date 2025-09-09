@@ -38,7 +38,7 @@ export function Breadcrumbs({ className }: BreadcrumbsProps) {
   return (
     <nav
       className={cn(
-        "flex items-center text-sm text-gray-600 dark:text-slate-400 py-2 px-4 md:px-6 bg-gray-200/60 dark:bg-slate-800/40",
+        "flex items-center text-sm text-slate-600 dark:text-slate-400 py-3 px-4 md:px-6 bg-slate-100/60 dark:bg-slate-800/40 border-b border-slate-200/60 dark:border-slate-700/40",
         className,
       )}
       aria-label="Breadcrumb"
@@ -47,7 +47,7 @@ export function Breadcrumbs({ className }: BreadcrumbsProps) {
         <li>
           <Link
             href="/"
-            className="flex items-center hover:text-gray-900 dark:hover:text-slate-200 transition-colors"
+            className="flex items-center hover:text-slate-900 dark:hover:text-slate-200 transition-colors p-1 rounded-md hover:bg-slate-200/50 dark:hover:bg-slate-700/50"
             aria-label="Início"
           >
             <Home className="h-4 w-4" />
@@ -56,13 +56,16 @@ export function Breadcrumbs({ className }: BreadcrumbsProps) {
 
         {segments.map((segment, index) => (
           <li key={segment.path} className="flex items-center">
-            <ChevronRight className="h-4 w-4 mx-1" aria-hidden="true" />
+            <ChevronRight className="h-4 w-4 mx-2 text-slate-400" aria-hidden="true" />
             {segment.isLast ? (
-              <span className="font-medium text-gray-900 dark:text-slate-200" aria-current="page">
+              <span className="font-semibold text-slate-900 dark:text-slate-200 px-2 py-1 rounded-md bg-slate-200/50 dark:bg-slate-700/50" aria-current="page">
                 {segment.label}
               </span>
             ) : (
-              <Link href={segment.path} className="hover:text-gray-900 dark:hover:text-slate-200 transition-colors">
+              <Link 
+                href={segment.path} 
+                className="hover:text-slate-900 dark:hover:text-slate-200 transition-colors px-2 py-1 rounded-md hover:bg-slate-200/50 dark:hover:bg-slate-700/50"
+              >
                 {segment.label}
               </Link>
             )}

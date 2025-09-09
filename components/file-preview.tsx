@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Archive } from "lucide-react"
+import { Archive, Download, FileText } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -134,39 +134,54 @@ export function FilePreview({ matchedData }: FilePreviewProps) {
   }
 
   return (
-    <div className="mt-8">
-      <Card>
-        <CardHeader>
-          <CardTitle>Prévia dos Arquivos:</CardTitle>
-          <CardDescription>Visualize e baixe os arquivos gerados a partir dos dados combinados</CardDescription>
+    <div className="mt-12">
+      <Card className="card-hover shadow-xl border-0 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm">
+        <CardHeader className="text-center pb-6">
+          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/20 mb-4">
+            <Archive className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+          </div>
+          <CardTitle className="text-2xl font-bold text-slate-800 dark:text-slate-200">
+            Prévia dos Arquivos
+          </CardTitle>
+          <CardDescription className="text-base">
+            Visualize e baixe os arquivos gerados a partir dos dados combinados
+          </CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="px-8 pb-8">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid grid-cols-3 mb-4">
-              <TabsTrigger value="estoque">Estoque lista.txt</TabsTrigger>
-              <TabsTrigger value="conferencia">Conferência Ok.txt</TabsTrigger>
-              <TabsTrigger value="produtos">Lista de Produtos ATUAIS.txt</TabsTrigger>
+            <TabsList className="grid grid-cols-3 mb-6 bg-slate-100 dark:bg-slate-800">
+              <TabsTrigger value="estoque" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+                Estoque lista.txt
+              </TabsTrigger>
+              <TabsTrigger value="conferencia" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+                Conferência Ok.txt
+              </TabsTrigger>
+              <TabsTrigger value="produtos" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+                Lista de Produtos ATUAIS.txt
+              </TabsTrigger>
             </TabsList>
 
-            <TabsContent value="estoque" className="border rounded-md p-4">
-              <div className="text-sm font-medium mb-2 text-gray-600 dark:text-slate-400">
-                Mostrando 5 de {matchedData.length} linhas
+            <TabsContent value="estoque" className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+              <div className="px-6 py-4 bg-slate-50 dark:bg-slate-700/50 border-b border-slate-200 dark:border-slate-700">
+                <div className="text-sm font-medium text-slate-600 dark:text-slate-400">
+                  Mostrando 5 de {matchedData.length} linhas
+                </div>
               </div>
               <div className="overflow-x-auto">
-                <table className="w-full border-collapse">
+                <table className="w-full">
                   <thead>
-                    <tr className="bg-gray-200 dark:bg-slate-800">
-                      <th className="border border-gray-300 dark:border-slate-700 px-4 py-2 text-left">CODIGO</th>
-                      <th className="border border-gray-300 dark:border-slate-700 px-4 py-2 text-left">QTDA</th>
-                      <th className="border border-gray-300 dark:border-slate-700 px-4 py-2 text-left">VALOR UNIT</th>
+                    <tr className="bg-slate-50/50 dark:bg-slate-800/50">
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700 dark:text-slate-300">CODIGO</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700 dark:text-slate-300">QTDA</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700 dark:text-slate-300">VALOR UNIT</th>
                     </tr>
                   </thead>
                   <tbody>
                     {estoquePreview.map((row, index) => (
-                      <tr key={index} className="border-b border-gray-300 dark:border-slate-700">
-                        <td className="border border-gray-300 dark:border-slate-700 px-4 py-2">{row.CODIGO}</td>
-                        <td className="border border-gray-300 dark:border-slate-700 px-4 py-2">{row.QTDA}</td>
-                        <td className="border border-gray-300 dark:border-slate-700 px-4 py-2">{row["VALOR UNIT"]}</td>
+                      <tr key={index} className="hover:bg-slate-50/50 dark:hover:bg-slate-700/50 transition-colors">
+                        <td className="px-6 py-3 font-medium">{row.CODIGO}</td>
+                        <td className="px-6 py-3 text-center">{row.QTDA}</td>
+                        <td className="px-6 py-3 text-right font-mono">{row["VALOR UNIT"]}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -174,31 +189,33 @@ export function FilePreview({ matchedData }: FilePreviewProps) {
               </div>
             </TabsContent>
 
-            <TabsContent value="conferencia" className="border rounded-md p-4">
-              <div className="text-sm font-medium mb-2 text-gray-600 dark:text-slate-400">
-                Mostrando 5 de {matchedData.length} linhas
+            <TabsContent value="conferencia" className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+              <div className="px-6 py-4 bg-slate-50 dark:bg-slate-700/50 border-b border-slate-200 dark:border-slate-700">
+                <div className="text-sm font-medium text-slate-600 dark:text-slate-400">
+                  Mostrando 5 de {matchedData.length} linhas
+                </div>
               </div>
               <div className="overflow-x-auto">
-                <table className="w-full border-collapse">
+                <table className="w-full">
                   <thead>
-                    <tr className="bg-gray-200 dark:bg-slate-800">
-                      <th className="border border-gray-300 dark:border-slate-700 px-4 py-2 text-left">CODIGO</th>
-                      <th className="border border-gray-300 dark:border-slate-700 px-4 py-2 text-left">DESCRI O</th>
-                      <th className="border border-gray-300 dark:border-slate-700 px-4 py-2 text-left">QTDA</th>
-                      <th className="border border-gray-300 dark:border-slate-700 px-4 py-2 text-left">EXTRAINF01</th>
-                      <th className="border border-gray-300 dark:border-slate-700 px-4 py-2 text-left">EXTRAINF02</th>
-                      <th className="border border-gray-300 dark:border-slate-700 px-4 py-2 text-left">REQEXTRADATA</th>
+                    <tr className="bg-slate-50/50 dark:bg-slate-800/50">
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700 dark:text-slate-300">CODIGO</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700 dark:text-slate-300">DESCRIÇÃO</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700 dark:text-slate-300">QTDA</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700 dark:text-slate-300">EXTRAINF01</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700 dark:text-slate-300">EXTRAINF02</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700 dark:text-slate-300">REQEXTRADATA</th>
                     </tr>
                   </thead>
                   <tbody>
                     {conferenciaPreview.map((row, index) => (
-                      <tr key={index} className="border-b border-gray-300 dark:border-slate-700">
-                        <td className="border border-gray-300 dark:border-slate-700 px-4 py-2">{row.CODIGO}</td>
-                        <td className="border border-gray-300 dark:border-slate-700 px-4 py-2">{row["DESCRI  O"]}</td>
-                        <td className="border border-gray-300 dark:border-slate-700 px-4 py-2">{row.QTDA}</td>
-                        <td className="border border-gray-300 dark:border-slate-700 px-4 py-2">{row.EXTRAINF01}</td>
-                        <td className="border border-gray-300 dark:border-slate-700 px-4 py-2">{row.EXTRAINF02}</td>
-                        <td className="border border-gray-300 dark:border-slate-700 px-4 py-2">{row.REQEXTRADATA}</td>
+                      <tr key={index} className="hover:bg-slate-50/50 dark:hover:bg-slate-700/50 transition-colors">
+                        <td className="px-6 py-3 font-medium">{row.CODIGO}</td>
+                        <td className="px-6 py-3 max-w-xs truncate">{row["DESCRI  O"]}</td>
+                        <td className="px-6 py-3 text-center">{row.QTDA}</td>
+                        <td className="px-6 py-3">{row.EXTRAINF01}</td>
+                        <td className="px-6 py-3">{row.EXTRAINF02}</td>
+                        <td className="px-6 py-3 text-center">{row.REQEXTRADATA}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -206,29 +223,31 @@ export function FilePreview({ matchedData }: FilePreviewProps) {
               </div>
             </TabsContent>
 
-            <TabsContent value="produtos" className="border rounded-md p-4">
-              <div className="text-sm font-medium mb-2 text-gray-600 dark:text-slate-400">
-                Mostrando 5 de {matchedData.length} linhas
+            <TabsContent value="produtos" className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+              <div className="px-6 py-4 bg-slate-50 dark:bg-slate-700/50 border-b border-slate-200 dark:border-slate-700">
+                <div className="text-sm font-medium text-slate-600 dark:text-slate-400">
+                  Mostrando 5 de {matchedData.length} linhas
+                </div>
               </div>
               <div className="overflow-x-auto">
-                <table className="w-full border-collapse">
+                <table className="w-full">
                   <thead>
-                    <tr className="bg-gray-200 dark:bg-slate-800">
-                      <th className="border border-gray-300 dark:border-slate-700 px-4 py-2 text-left">CODE</th>
-                      <th className="border border-gray-300 dark:border-slate-700 px-4 py-2 text-left">DESCRIPTION</th>
-                      <th className="border border-gray-300 dark:border-slate-700 px-4 py-2 text-left">EXTRAINF01</th>
-                      <th className="border border-gray-300 dark:border-slate-700 px-4 py-2 text-left">EXTRAINF02</th>
-                      <th className="border border-gray-300 dark:border-slate-700 px-4 py-2 text-left">REQEXTRADATA</th>
+                    <tr className="bg-slate-50/50 dark:bg-slate-800/50">
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700 dark:text-slate-300">CODE</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700 dark:text-slate-300">DESCRIPTION</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700 dark:text-slate-300">EXTRAINF01</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700 dark:text-slate-300">EXTRAINF02</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700 dark:text-slate-300">REQEXTRADATA</th>
                     </tr>
                   </thead>
                   <tbody>
                     {produtosPreview.map((row, index) => (
-                      <tr key={index} className="border-b border-gray-300 dark:border-slate-700">
-                        <td className="border border-gray-300 dark:border-slate-700 px-4 py-2">{row.CODE}</td>
-                        <td className="border border-gray-300 dark:border-slate-700 px-4 py-2">{row.DESCRIPTION}</td>
-                        <td className="border border-gray-300 dark:border-slate-700 px-4 py-2">{row.EXTRAINF01}</td>
-                        <td className="border border-gray-300 dark:border-slate-700 px-4 py-2">{row.EXTRAINF02}</td>
-                        <td className="border border-gray-300 dark:border-slate-700 px-4 py-2">{row.REQEXTRADATA}</td>
+                      <tr key={index} className="hover:bg-slate-50/50 dark:hover:bg-slate-700/50 transition-colors">
+                        <td className="px-6 py-3 font-medium">{row.CODE}</td>
+                        <td className="px-6 py-3 max-w-xs truncate">{row.DESCRIPTION}</td>
+                        <td className="px-6 py-3">{row.EXTRAINF01}</td>
+                        <td className="px-6 py-3">{row.EXTRAINF02}</td>
+                        <td className="px-6 py-3 text-center">{row.REQEXTRADATA}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -237,56 +256,103 @@ export function FilePreview({ matchedData }: FilePreviewProps) {
             </TabsContent>
           </Tabs>
 
-          <div className="mt-8">
-            <h3 className="text-lg font-medium mb-4">Arquivos Gerados:</h3>
-            <Button
-              onClick={downloadAllFiles}
-              className="w-full mb-4 flex items-center justify-center gap-2"
-              disabled={isGenerating}
-            >
-              <Archive className="h-5 w-5" />
-              {isGenerating ? "Gerando..." : "Baixar Todos os Arquivos (ZIP)"}
-            </Button>
+          <div className="mt-12">
+            <div className="text-center mb-8">
+              <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-200 mb-2">Arquivos Gerados</h3>
+              <p className="text-muted-foreground">Baixe os arquivos individuais ou todos de uma vez</p>
+            </div>
+            
+            <div className="bg-gradient-to-r from-primary/5 to-primary/10 dark:from-primary/10 dark:to-primary/20 rounded-xl p-6 mb-8">
+              <Button
+                onClick={downloadAllFiles}
+                className="button-glow w-full flex items-center justify-center gap-3 py-4 text-base font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                disabled={isGenerating}
+                size="lg"
+              >
+                <Archive className="h-5 w-5" />
+                {isGenerating ? (
+                  <div className="flex items-center gap-2">
+                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    Gerando ZIP...
+                  </div>
+                ) : (
+                  "Baixar Todos os Arquivos (ZIP)"
+                )}
+              </Button>
+            </div>
 
-            <div className="space-y-2">
-              <h4 className="text-sm font-medium mb-2 text-gray-700 dark:text-slate-300">Downloads Individuais:</h4>
-              <div className="flex justify-between items-center p-3 border border-gray-300 dark:border-slate-700 rounded-md">
-                <div className="flex items-center gap-2">
-                  <span className="text-sm">Estoque lista.txt</span>
+            <div className="space-y-4">
+              <h4 className="text-lg font-semibold text-slate-700 dark:text-slate-300 mb-4">Downloads Individuais:</h4>
+              
+              <div className="grid gap-4 md:grid-cols-3">
+                <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 hover:shadow-md transition-shadow">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 rounded-lg bg-green-100 dark:bg-green-900/20">
+                        <FileText className="h-4 w-4 text-green-600 dark:text-green-400" />
+                      </div>
+                      <div>
+                        <p className="font-medium text-slate-700 dark:text-slate-300">Estoque lista.txt</p>
+                        <p className="text-xs text-muted-foreground">Dados de estoque</p>
+                      </div>
+                    </div>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => downloadFile(generateEstoqueContent(), "estoque_list.txt")}
+                      className="hover:bg-primary hover:text-primary-foreground transition-colors"
+                    >
+                      <Download className="h-4 w-4 mr-1" />
+                      Download
+                    </Button>
+                  </div>
                 </div>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => downloadFile(generateEstoqueContent(), "estoque_list.txt")}
-                >
-                  Download
-                </Button>
-              </div>
 
-              <div className="flex justify-between items-center p-3 border border-gray-300 dark:border-slate-700 rounded-md">
-                <div className="flex items-center gap-2">
-                  <span className="text-sm">Conferência Ok.txt</span>
+                <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 hover:shadow-md transition-shadow">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 rounded-lg bg-blue-100 dark:bg-blue-900/20">
+                        <FileText className="h-4 w-4 text-blue-600 dark:text-blue-400" />
+                      </div>
+                      <div>
+                        <p className="font-medium text-slate-700 dark:text-slate-300">Conferência Ok.txt</p>
+                        <p className="text-xs text-muted-foreground">Dados de conferência</p>
+                      </div>
+                    </div>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => downloadFile(generateConferenciaContent(), "Conferência Ok.txt")}
+                      className="hover:bg-primary hover:text-primary-foreground transition-colors"
+                    >
+                      <Download className="h-4 w-4 mr-1" />
+                      Download
+                    </Button>
+                  </div>
                 </div>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => downloadFile(generateConferenciaContent(), "Conferência Ok.txt")}
-                >
-                  Download
-                </Button>
-              </div>
 
-              <div className="flex justify-between items-center p-3 border border-gray-300 dark:border-slate-700 rounded-md">
-                <div className="flex items-center gap-2">
-                  <span className="text-sm">Lista de Produtos ATUAIS.txt</span>
+                <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 hover:shadow-md transition-shadow">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 rounded-lg bg-purple-100 dark:bg-purple-900/20">
+                        <FileText className="h-4 w-4 text-purple-600 dark:text-purple-400" />
+                      </div>
+                      <div>
+                        <p className="font-medium text-slate-700 dark:text-slate-300">Lista de Produtos ATUAIS.txt</p>
+                        <p className="text-xs text-muted-foreground">Lista de produtos</p>
+                      </div>
+                    </div>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => downloadFile(generateProdutosContent(), "Lista de Produtos ATUAIS.txt")}
+                      className="hover:bg-primary hover:text-primary-foreground transition-colors"
+                    >
+                      <Download className="h-4 w-4 mr-1" />
+                      Download
+                    </Button>
+                  </div>
                 </div>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => downloadFile(generateProdutosContent(), "Lista de Produtos ATUAIS.txt")}
-                >
-                  Download
-                </Button>
               </div>
             </div>
           </div>
