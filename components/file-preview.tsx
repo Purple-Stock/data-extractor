@@ -28,8 +28,10 @@ export function FilePreview({ matchedData }: FilePreviewProps) {
 
     return {
       CODIGO: row["Cód. Auxiliar"] || "",
+      DESCRIÇÃO: row["Descrição_1"] || "",
       QTDA: row.QUANTIDADE || "0",
       "VALOR UNIT": valorUnit,
+      EXTRAINF01: row.EXTRAINF01 || "",
     }
   })
 
@@ -56,7 +58,7 @@ export function FilePreview({ matchedData }: FilePreviewProps) {
 
   // Generate file content functions
   const generateEstoqueContent = () => {
-    let content = "CODIGO;QTDA;VALOR UNIT\n"
+    let content = "CODIGO;DESCRIÇÃO;QTDA;VALOR UNIT;EXTRAINF01\n"
     matchedData.forEach((row) => {
       let valorUnit = "0.00"
       if (row.VALORUNIT) {
@@ -65,7 +67,7 @@ export function FilePreview({ matchedData }: FilePreviewProps) {
           valorUnit = numValue.toFixed(2)
         }
       }
-      const line = `${row["Cód. Auxiliar"] || ""};${row.QUANTIDADE || "0"};${valorUnit}`
+      const line = `${row["Cód. Auxiliar"] || ""};${row["Descrição_1"] || ""};${row.QUANTIDADE || "0"};${valorUnit};${row.EXTRAINF01 || ""}`
       content += line + "\n"
     })
     return content
@@ -172,16 +174,20 @@ export function FilePreview({ matchedData }: FilePreviewProps) {
                   <thead>
                     <tr className="bg-slate-50/50 dark:bg-slate-800/50">
                       <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700 dark:text-slate-300">CODIGO</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700 dark:text-slate-300">DESCRIÇÃO</th>
                       <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700 dark:text-slate-300">QTDA</th>
                       <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700 dark:text-slate-300">VALOR UNIT</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700 dark:text-slate-300">EXTRAINF01</th>
                     </tr>
                   </thead>
                   <tbody>
                     {estoquePreview.map((row, index) => (
                       <tr key={index} className="hover:bg-slate-50/50 dark:hover:bg-slate-700/50 transition-colors">
                         <td className="px-6 py-3 font-medium">{row.CODIGO}</td>
+                        <td className="px-6 py-3 max-w-xs truncate">{row.DESCRIÇÃO}</td>
                         <td className="px-6 py-3 text-center">{row.QTDA}</td>
                         <td className="px-6 py-3 text-right font-mono">{row["VALOR UNIT"]}</td>
+                        <td className="px-6 py-3">{row.EXTRAINF01}</td>
                       </tr>
                     ))}
                   </tbody>

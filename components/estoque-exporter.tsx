@@ -17,7 +17,7 @@ export function EstoqueExporter({ matchedData, fileName = "estoque_list.txt" }: 
 
     try {
       // Create header
-      let content = "CODIGO;QTDA;VALOR UNIT\n"
+      let content = "CODIGO;DESCRIÇÃO;QTDA;VALOR UNIT;EXTRAINF01\n"
 
       // Add data rows
       matchedData.forEach((row) => {
@@ -31,7 +31,7 @@ export function EstoqueExporter({ matchedData, fileName = "estoque_list.txt" }: 
           }
         }
 
-        const line = `${row["Cód. Auxiliar"] || ""};${row.QUANTIDADE || "0"};${valorUnit}`
+        const line = `${row["Cód. Auxiliar"] || ""};${row["Descrição_1"] || ""};${row.QUANTIDADE || "0"};${valorUnit};${row.EXTRAINF01 || ""}`
         content += line + "\n"
       })
 
