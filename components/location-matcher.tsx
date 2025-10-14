@@ -90,7 +90,7 @@ export function LocationMatcher() {
     const dataToPreview = getFilteredData(activeTab).slice(0, 3)
 
     if (exportFormat === "estoque") {
-      const header = "CODIGO;DESCRIÇÃO;QTDA;VALOR UNIT;EXTRAINF01"
+      const header = "CODIGO;QTDA;DESCRIÇÃO;VALOR UNIT;EXTRAINF01"
       const rows = dataToPreview.map((row) => {
         let valorUnit = "0.00"
         if (row.VALORUNIT) {
@@ -99,7 +99,7 @@ export function LocationMatcher() {
             valorUnit = numValue.toFixed(2)
           }
         }
-        return `${row["Cód. Auxiliar"] || ""};${row["Descrição_1"] || ""};${row.QUANTIDADE || "0"};${valorUnit};${row.EXTRAINF01 || ""}`
+        return `${row["Cód. Auxiliar"] || ""};${row.QUANTIDADE || "0"};${row["Descrição_1"] || ""};${valorUnit};${row.EXTRAINF01 || ""}`
       })
       setPreviewContent([header, ...rows])
     } else {
@@ -278,7 +278,7 @@ export function LocationMatcher() {
   }
 
   const generateEstoqueContent = (data: MatchedRow[]) => {
-    let content = "CODIGO;DESCRIÇÃO;QTDA;VALOR UNIT;EXTRAINF01\n"
+    let content = "CODIGO;QTDA;DESCRIÇÃO;VALOR UNIT;EXTRAINF01\n"
     data.forEach((row) => {
       let valorUnit = "0.00"
       if (row.VALORUNIT) {
@@ -287,7 +287,7 @@ export function LocationMatcher() {
           valorUnit = numValue.toFixed(2)
         }
       }
-      const line = `${row["Cód. Auxiliar"] || ""};${row["Descrição_1"] || ""};${row.QUANTIDADE || "0"};${valorUnit};${row.EXTRAINF01 || ""}`
+      const line = `${row["Cód. Auxiliar"] || ""};${row.QUANTIDADE || "0"};${row["Descrição_1"] || ""};${valorUnit};${row.EXTRAINF01 || ""}`
       content += line + "\n"
     })
     return content
@@ -381,8 +381,8 @@ export function LocationMatcher() {
 
         return {
           CODIGO: row["Cód. Auxiliar"] || "",
-          DESCRIÇÃO: row["Descrição_1"] || "",
           QTDA: row.QUANTIDADE || "0",
+          DESCRIÇÃO: row["Descrição_1"] || "",
           "VALOR UNIT": valorUnit,
           EXTRAINF01: row.EXTRAINF01 || "",
         }
@@ -581,7 +581,7 @@ export function LocationMatcher() {
                     value={exportFormat}
                     onChange={(e) => setExportFormat(e.target.value as "estoque" | "produtos")}
                   >
-                    <option value="estoque">Estoque (CODIGO;DESCRIÇÃO;QTDA;VALOR UNIT;EXTRAINF01)</option>
+                    <option value="estoque">Estoque (CODIGO;QTDA;DESCRIÇÃO;VALOR UNIT;EXTRAINF01)</option>
                     <option value="produtos">Produtos (CODE;DESCRIPTION;EXTRAINF01;EXTRAINF02;REQEXTRADATA)</option>
                   </select>
                 </div>
@@ -726,8 +726,8 @@ export function LocationMatcher() {
                       {exportFormat === "estoque" ? (
                         <>
                           <TableHead>CODIGO</TableHead>
-                          <TableHead>DESCRIÇÃO</TableHead>
                           <TableHead>QTDA</TableHead>
+                          <TableHead>DESCRIÇÃO</TableHead>
                           <TableHead>VALOR UNIT</TableHead>
                           <TableHead>EXTRAINF01</TableHead>
                         </>
@@ -748,8 +748,8 @@ export function LocationMatcher() {
                         {exportFormat === "estoque" ? (
                           <>
                             <TableCell>{row.CODIGO}</TableCell>
-                            <TableCell>{row.DESCRIÇÃO}</TableCell>
                             <TableCell>{row.QTDA}</TableCell>
+                            <TableCell>{row.DESCRIÇÃO}</TableCell>
                             <TableCell>{row["VALOR UNIT"]}</TableCell>
                             <TableCell>{row.EXTRAINF01}</TableCell>
                           </>
