@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { FileSpreadsheet, MapPin } from "lucide-react"
+import { FileSpreadsheet, MapPin, FileText } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { ThemeToggle } from "@/components/theme-toggle"
 
@@ -21,6 +21,12 @@ export function Header() {
       label: "INVENTÁRIO CONTAGEM POR SEÇÃO",
       icon: MapPin,
       active: pathname === "/location",
+    },
+    {
+      href: "/location-simple",
+      label: "INVENTÁRIO CONTAGEM SIMPLES",
+      icon: FileText,
+      active: pathname === "/location-simple",
     },
   ]
 
